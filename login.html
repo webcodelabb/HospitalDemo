@@ -1,0 +1,185 @@
+<style>
+    :root {
+  --primary-color: #2B4C4E; /* Teal for buttons and headings */
+  --secondary-color: #56A9A8; /* Lighter teal for hover effects */
+  --text-color: #5C5C5C; /* Default text color */
+  --background-color: #FAFAF9; /* Soft background */
+  --input-background: #FFFFFF; /* Input field background */
+  --border-color: #E0E0E0; /* Light border for input fields */
+  --error-color: #D9534F; /* Red for errors */
+}
+
+.login-section {
+  background-color: var(--background-color);
+  padding: 40px 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--input-background);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-wrapper h2 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-wrapper p {
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--input-background);
+  color: var(--text-color);
+}
+
+.form-group input:focus {
+  border-color: var(--secondary-color);
+  outline: none;
+}
+
+.form-actions {
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--input-background);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+}
+
+.forgot-password {
+  display: block;
+  margin-top: 15px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.warning-text {
+  color: var(--error-color);
+  background-color: #fdecea;
+  padding: 10px;
+  border: 1px solid var(--error-color);
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+</style>
+
+<section id="admin-login" class="login-section">
+    <div class="container">
+      <div class="login-wrapper">
+        <h2>Admin Login</h2>
+        <p>Please enter your credentials to access the admin panel.</p>
+        
+        <!-- Warning Message: Invalid Credentials -->
+        <div id="invalid-credentials" class="warning-text" style="display: none;">
+          Invalid username or password. Please try again.
+        </div>
+  
+        <form action="/admin/login" method="POST" class="login-form">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required />
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="login-button" class="btn-primary">Login</button>
+            <a href="#" id="reset-password" class="forgot-password">Forgot Password?</a>
+          </div>
+        </form>
+  
+        <!-- Warning Message: Unauthorized Reset Password -->
+        <div id="unauthorized-reset" class="warning-text" style="display: none;">
+          Unauthorized request. Please contact the admin for help.
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+<!-- <section id="admin-login" class="login-section">
+    <div class="container">
+      <div class="login-wrapper">
+        <h2>Admin Login</h2>
+        <p>Please enter your credentials to access the admin panel.</p>
+        <form action="/admin/login" method="POST" class="login-form">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required />
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Login</button>
+            <a href="/admin/reset-password" class="forgot-password">Forgot Password?</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+   -->
+
+<script>
+    // Simulating the invalid credentials and unauthorized reset warnings
+document.getElementById("login-button").addEventListener("click", function (event) {
+  event.preventDefault(); // Prevent form submission
+  const warning = document.getElementById("invalid-credentials");
+  warning.style.display = "block"; // Show invalid credentials message
+});
+
+document.getElementById("reset-password").addEventListener("click", function (event) {
+  event.preventDefault(); // Prevent redirection
+  const warning = document.getElementById("unauthorized-reset");
+  warning.style.display = "block"; // Show unauthorized reset message
+});
+
+</script>
